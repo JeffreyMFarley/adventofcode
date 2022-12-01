@@ -11,7 +11,7 @@ INPUT = 'input0.txt'
 
 def load():
     with io.open(INPUT,'r', encoding='utf-8') as f:
-        pass
+        return [l.strip() for l in f]
 
 # ------------------------------------------------------
 #
