@@ -1,4 +1,5 @@
 import io
+from functools import reduce
 
 INPUT = "input1.txt"
 
@@ -16,10 +17,7 @@ def load():
 
 
 def find_common(t):
-    intersect = t[0]
-    for i in range(1, len(t)):
-        intersect &= t[i]
-
+    intersect = reduce(lambda x, y: x & y, t)
     assert len(intersect) == 1
     return intersect.pop()
 
