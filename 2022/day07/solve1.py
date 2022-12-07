@@ -25,11 +25,10 @@ class OS(object):
         if not s:
             return
 
-        output = s.splitlines()
-        cmd_line = output.pop(0).split()
-        cmd = cmd_line.pop(0)
+        cmd_line, *output = s.splitlines()
+        cmd, *args = cmd_line.split()
         if cmd == "cd":
-            self._change_dir(cmd_line[0])
+            self._change_dir(args[0])
         elif cmd == "ls":
             self._parse_ls_output(output)
         else:
@@ -117,6 +116,7 @@ def load():
 # ------------------------------------------------------
 # Functions
 
+
 def under_100K(i: int) -> bool:
     return i < 100000
 
@@ -137,8 +137,9 @@ def main():
     unused = TOTAL_SPACE - curr_size
     needed = FREE_NEEDED - unused
 
-    candidates = sorted(filter(lambda x: x > needed, sizes))
-    print(f'Solution 2: {candidates[0]:,}')
+    candidate = min(filter(lambda x: x > needed, sizes))
+    print(f"Solution 2: {candidate:,}")
+
 
 if __name__ == "__main__":
     main()
