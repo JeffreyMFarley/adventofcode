@@ -2,7 +2,7 @@
 
 set -e
 
-NEW_DIR="./2022/$1"
+NEW_DIR="./2025/$1"
 
 mkdir "$NEW_DIR"
 touch "$NEW_DIR/input0.txt"
